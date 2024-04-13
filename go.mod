@@ -10,7 +10,6 @@ require (
 	github.com/caarlos0/env/v6 v6.10.1
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/jmoiron/sqlx v1.3.5
-	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect

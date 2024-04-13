@@ -1,4 +1,4 @@
-package config
+package database
 
 import (
 	"context"
@@ -8,9 +8,10 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
+	"github.com/komugi8/clava/pkg/config"
 )
 
-func NewDB(ctx context.Context, cfg *Config) (*sqlx.DB, error) {
+func NewDB(ctx context.Context, cfg *config.Config) (*sqlx.DB, error) {
 	conn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", cfg.DBUser, cfg.DBPassword, cfg.DBHost, cfg.DBPort, cfg.DBName)
 	log.Print(conn)
 	db, err := sql.Open("mysql", conn)

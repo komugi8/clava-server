@@ -5,7 +5,8 @@ import (
 	"net/http"
 
 	"github.com/komugi8/clava/api/route"
-	"github.com/komugi8/clava/config"
+	"github.com/komugi8/clava/pkg/config"
+	"github.com/komugi8/clava/pkg/database"
 	"github.com/labstack/echo/v4"
 )
 
@@ -15,7 +16,7 @@ func main() {
 		panic(err)
 	}
 	ctx := context.Background()
-	db, err := config.NewDB(ctx, cfg)
+	db, err := database.NewDB(ctx, cfg)
 	if err != nil {
 		panic(err)
 	}
