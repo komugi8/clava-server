@@ -4,8 +4,8 @@ CREATE TABLE `user`
     `name` VARCHAR(20) NOT NULL,
     `password` VARCHAR(80) NOT NULL,
     `role` VARCHAR(80) NOT NULL,
-    `created_at` DATETIME(6) NOT NULL,
-    `updated_at` DATETIME(6) NOT NULL,
+    `created_at` DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `updated_at` DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
     PRIMARY KEY (`id`),
     UNIQUE KEY `uix_name` (`name`) USING BTREE
 ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -17,8 +17,8 @@ CREATE TABLE `video`
     `title` VARCHAR(255) NOT NULL,
     `description` TEXT NOT NULL,
     `url` VARCHAR(255) NOT NULL,
-    `created_at` DATETIME(6) NOT NULL,
-    `updated_at` DATETIME(6) NOT NULL,
+    `created_at` DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `updated_at` DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
     PRIMARY KEY (`id`),
     KEY `fk_video_user_id` (`user_id`),
     CONSTRAINT `fk_video_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

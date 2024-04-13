@@ -1,12 +1,28 @@
 package main
 
 import (
-	"github.com/labstack/echo/v4"
+	"context"
 	"net/http"
+
+	"github.com/komugi8/clava/api/route"
+	"github.com/komugi8/clava/config"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
+	cfg, err := config.NewConfig()
+	if err != nil {
+		panic(err)
+	}
+	ctx := context.Background()
+	db, err := config.NewDB(ctx, cfg)
+	if err != nil {
+		panic(err)
+	}
 	e := echo.New()
+	user := e.Group("/user")
+	route.NewSignUpRoute(db, user)
+
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
